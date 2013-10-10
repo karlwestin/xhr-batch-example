@@ -30,7 +30,7 @@ define([
 
       // if there are outstanding calls, poll again:
       if(pending.length || cache.length) {
-        request();
+        setTimeout(request, 3000);
       }
     };
 
