@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>XHR Pipeline test page</title>
+    <meta charset="utf-8" />
+</head>
+<body>
+    <p>
+    This page tests the XHR pipeline.
+    </p>
+
+    <p>
+    The pipeline works like this:
+    </p>
+
+    <p>
+    When making ajax calls, calls are not fired until next tick (setTimeout 10ms)
+    Therefore, any other calls being made meanwhile, will be stocked, and calls will be batched
+    </p>
+
+    <p>
+    Each call gets an ID that the endpoint is expected to return
+    </p>
+
+    <p>
+    The server must process calls in the received order. It's free to return some calls early should it want to.
+    The client then opens up a new long-poll to the pipeline, where the server can put the next round of calls
+    </p>
+
+    <button id="fire">Fire 5 calls</button>
+    <ol id="list"></ol>
+
+    <script type="text/javascript" charset="utf-8" src="bower_components/requirejs/require.js" data-main="script"> </script>
+</body>
+</html>
